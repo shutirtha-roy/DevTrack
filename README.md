@@ -1,6 +1,6 @@
 # DevTrack
 
-A web application to track activities from users such as tracked time, 
+A web application with ASP.NET Core to track activities from users such as tracked time, 
 mouse clicks, screenshots, web camera images, and running 
 applications on the desktop. The tracking data is fetched from a 
 desktop application using Web API (RESTful). This project was developed as the final project of the ASP.Net Core training course from Dev Skill. 
