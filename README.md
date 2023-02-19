@@ -11,7 +11,7 @@ worked collaboratively to develop this project within a month. We have
 used the MSSQL server to store the data, and the project has been 
 Dockerized.
 
-Owners or the users can check their report(data which is fetched from Web API) to see their time tracking details which includes Screenshots, WebCaputures, Keyboard Hits, Mouse Hits, Running Programs and Windows.
+Owners or the users can also examine or print their report(data which are fetched from Web API) to see their time tracking details which includes Screenshots, WebCaputures, Keyboard Hits, Mouse Hits, Running Programs and Windows.
 
 ## Web API
 |  |  |  |  |
