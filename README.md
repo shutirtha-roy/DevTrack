@@ -39,7 +39,7 @@ Owners or the users can also examine or print their report(data which are fetche
 ### Report
 |  |  |  |  |
 |---------|---------|---------|---------|
-| <img src="https://github.com/shutirtha-roy/DevTrack/blob/main/ApplicationScreenshots/WEB/Report/0_SelectReportType.png?raw=true"
+| <img src="ApplicationScreenshots/WEB/Report/0_SelectReportType.png"
 
 ### Member Invitation & Response
 |  |  |
