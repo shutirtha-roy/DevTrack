@@ -14,7 +14,7 @@ Dockerized.
 Owners or the users can also examine or print their report(data which are fetched from Web API) to see their time tracking details which includes Screenshots, WebCaputures, Keyboard Hits, Mouse Hits, Running Programs and Windows.
 
 ## Web API
-|  |  |  |  |
+| API Home Page | API Login | API Get Project | API POST Project |
 |---------|---------|---------|---------|
 | <img src="ApplicationScreenshots/API/1.%20API_HomePage.png"> | <img src="ApplicationScreenshots/API/2.%20API_Login.png"> | <img src="ApplicationScreenshots/API/3.%20API_GetProject.png"> | <img src="ApplicationScreenshots/API/4.%20API_POSTProject.png"> |
 
