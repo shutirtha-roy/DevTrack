@@ -36,6 +36,11 @@ Owners or the users can also examine or print their report(data which are fetche
 |  |  |  |
 | <img src="ApplicationScreenshots/WEB/Project/4.%20ShowProjects.PNG"> | <img src="ApplicationScreenshots/WEB/Project/7.%20EditProject_POST.PNG"> | <img src="ApplicationScreenshots/WEB/Project/3.%20ShowProjectsArchived.PNG"> 
 
+### Report
+|  |  |  |  |
+|---------|---------|---------|---------|
+| <img src="https://github.com/shutirtha-roy/DevTrack/blob/main/ApplicationScreenshots/WEB/Report/0_SelectReportType.png?raw=true"
+
 ### Member Invitation & Response
 |  |  |
 |---------|---------|
