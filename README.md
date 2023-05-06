@@ -20,7 +20,7 @@ Owners or the users can also examine or print their report(data which are fetche
 
 ## Web Application
 ### Login and Sign Up
-|  |  |
+| Login | Sign Up |
 |---------|---------|
 | <img src="ApplicationScreenshots/WEB/General/1.%20Login.PNG"> | <img src="ApplicationScreenshots/WEB/General/2.%20SignUp.PNG">|
 
