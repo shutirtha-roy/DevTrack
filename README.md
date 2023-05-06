@@ -30,11 +30,11 @@ Owners or the users can also examine or print their report(data which are fetche
 | <img src="ApplicationScreenshots/WEB/General/3.%20HomePage.PNG"> |
 
 ### Project Creation, Editing & Details
-|  |  |  |  |
+| Create Project GET | Create Project POST | Show Projects | Show Project Details |
 |---------|---------|---------|---------|
 | <img src="ApplicationScreenshots/WEB/Project/5.%20CreateProject_GET.PNG"> | <img src="ApplicationScreenshots/WEB/Project/6.%20CreateProject_POST.PNG"> | <img src="ApplicationScreenshots/WEB/Project/1.%20ShowProjects_.PNG"> | <img src="ApplicationScreenshots/WEB/Project/2.%20ShowProjectDetails.PNG"> |
-|  |  |  |
-| <img src="ApplicationScreenshots/WEB/Project/4.%20ShowProjects.PNG"> | <img src="ApplicationScreenshots/WEB/Project/7.%20EditProject_POST.PNG"> | <img src="ApplicationScreenshots/WEB/Project/3.%20ShowProjectsArchived.PNG"> 
+| Show Projects | Edit Project POST | Show Archived Projects |
+| <img src="ApplicationScreenshots/WEB/Project/4.%20ShowProjects.PNG"> | <img src="ApplicationScreenshots/WEB/Project/7.%20EditProject_POST.PNG"> | <img src="ApplicationScreenshots/WEB/Project/3.%20ShowProjectsArchived.PNG"> |
 
 ## Report
 
