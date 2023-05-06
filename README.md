@@ -36,16 +36,20 @@ Owners or the users can also examine or print their report(data which are fetche
 |  |  |  |
 | <img src="ApplicationScreenshots/WEB/Project/4.%20ShowProjects.PNG"> | <img src="ApplicationScreenshots/WEB/Project/7.%20EditProject_POST.PNG"> | <img src="ApplicationScreenshots/WEB/Project/3.%20ShowProjectsArchived.PNG"> 
 
-### Report
-|  |  |  |
-|---------|---------|---------|
+## Report
+
+| Select Report Type | User View Date | User View After Search | User View After Search Part II |
+|---------|---------|---------|---------|
 | <img src="ApplicationScreenshots/WEB/Report/0_SelectReportType.png"> | <img src="ApplicationScreenshots/WEB/Report/1_UserViewDate.png"> | 
 <img src="ApplicationScreenshots/WEB/Report/2_UserViewAfterSearch.png"> | <img src="ApplicationScreenshots/WEB/Report/3_UserViewAfterSearchPartII.png"> |
-|  |  |  |
-| <img src="ApplicationScreenshots/WEB/Report/4_UserViewAfterSearchScreenShare.png"> | <img src="ApplicationScreenshots/WEB/Report/5_UserViewAfterSearchWebcam.png"> | 
-<img src="ApplicationScreenshots/WEB/Report/6_MemberViewBeforeSearch.png"> | <img src="ApplicationScreenshots/WEB/Report/7_MemberViewAfterSearch.png">
-| 
-| <img src="ApplicationScreenshots/WEB/Report/7_MemberViewBeforeSearchDate.png">
+
+| User View After Search Screen Share | User View After Search Webcam | Member View Before Search | Member View After Search |
+|---------|---------|---------|---------|
+| <img src="ApplicationScreenshots/WEB/Report/4_UserViewAfterSearchScreenShare.png"> | <img src="ApplicationScreenshots/WEB/Report/5_UserViewAfterSearchWebcam.png"> | <img src="ApplicationScreenshots/WEB/Report/6_MemberViewBeforeSearch.png"> | <img src="ApplicationScreenshots/WEB/Report/7_MemberViewAfterSearch.png"> |
+
+| Member View Before Search Date |
+|---------|
+| <img src="ApplicationScreenshots/WEB/Report/7_MemberViewBeforeSearchDate.png"> |
 
 ### Member Invitation & Response
 |  |  |
