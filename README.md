@@ -57,7 +57,7 @@ Owners or the users can also examine or print their report(data which are fetche
 | <img src="ApplicationScreenshots/WEB/General/1.%20Login.PNG"> | <img src="ApplicationScreenshots/WEB/General/2.%20SignUp.PNG">|
 
 ### Settings
-|  |  |
+| Profile Picture | Member Timezone |
 |---------|---------|
 | <img src="ApplicationScreenshots/WEB/Settings/1.%20ProfilePic.PNG"> | <img src="ApplicationScreenshots/WEB/Settings/2_MemberViewTimezone.png">|
 
