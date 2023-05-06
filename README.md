@@ -41,8 +41,8 @@ Owners or the users can also examine or print their report(data which are fetche
 |---------|---------|---------|---------|
 | <img src="ApplicationScreenshots/WEB/Report/0_SelectReportType.png"> | <img src="ApplicationScreenshots/WEB/Report/1_UserViewDate.png"> | 
 <img src="ApplicationScreenshots/WEB/Report/2_UserViewAfterSearch.png"> | <img src="ApplicationScreenshots/WEB/Report/3_UserViewAfterSearchPartII.png"> |
-|---------|---------|---------|---------|
-| <img src="ApplicationScreenshots/WEB/Report/4_UserViewAfterSearchScreenShare.png"> | 
+|  |  |  |
+| <img src="ApplicationScreenshots/WEB/Report/4_UserViewAfterSearchScreenShare.png">
 
 ### Member Invitation & Response
 |  |  |
