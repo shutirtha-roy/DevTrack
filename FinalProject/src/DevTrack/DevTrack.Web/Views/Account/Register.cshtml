@@ -1,0 +1,75 @@
+﻿@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="register-box">
+    <div class="card-header text-center">
+        <a asp-controller="Account" asp-action="Login" class="h1 text-light"><b>DevTrack</b></a>
+    </div>
+    <!-- /Sign Up-logo -->
+    <div class="card card-primary">
+        <!-- /.card-body -->
+        <div class="card-body">
+            <p class="register-box-msg h5">Sign Up</p>
+            <form id="registerForm" asp-antiforgery="true" asp-controller="Account" asp-action="Register" method="post">
+                <div class="input-group mb-3 flex-wrap">
+                    <input asp-for="Name" type="Text" class="form-control" placeholder="Name">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger input-group"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger input-group"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger input-group"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger input-group"></span>
+                </div>
+                <div class="text-center mt-2 mb-3">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+                </div>
+            </form>
+            <div class="d-flex">
+                <div class="">
+                    <p class="mb-1">
+                        Already have an account?
+                    </p>
+                </div>
+                <div class="ml-auto">
+                    <a asp-asp-controller="Account" asp-action="Login" class="text-center btn btn-secondary justify-content-end">Sign In</a>
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.login-box -->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,86 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="row">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="login-page gradient-background">
+        <!-- Main content -->
+        <section class="content">
+            <div class="login-box">
+                <!-- Title -->
+                <div class="card-header text-center">
+                    <a asp-controller="Account" asp-action="Login" class="h1 text-light"><b>DevTrack</b></a>
+                </div>
+                <!-- /.Title -->
+                <!-- login-logo -->
+                <div class="card card-primary">
+                    <!-- card-body -->
+                    <div class="card-body">
+                        <p class="login-box-msg h5">Sign in</p>
+                        <form id="account" asp-antiforgery="true" asp-controller="Account" asp-action="Login" method="post">
+                            <!-- Email -->
+                            <div class="input-group mb-3">
+                                <input asp-for="Email" class="form-control" placeholder="Email">
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-envelope"></span>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="Email" class="text-danger input-group"></span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <input asp-for="Password" class="form-control" placeholder="Password">
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-lock"></span>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger input-group"></span>
+                            </div>
+                            <!-- /.Email -->
+                            <!-- Forgot Password -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="checkbox">
+                                        <label asp-for="RememberMe" class="form-label">
+                                            <input class="checkbox" asp-for="RememberMe" />
+                                            @Html.DisplayNameFor(m => m.RememberMe)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <p class="mb-1 text-right"><a href="ForgotPassword.html">Forgot password?</a></p>
+                                </div>
+                            </div>
+                            <!-- Forgot Password -->
+                            <!-- Sign In -->
+                            <div class="text-center mt-2 mb-3">
+                                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                            </div>
+                            <!-- Sign In -->
+                        </form>
+                        <!-- Sign Up -->
+                        <div>
+                            <div class="text-line">
+                                <p><span>Or</span></p>
+                            </div>
+                            <div class="ml-auto">
+                                <a asp-controller="Account" asp-action="Register" class="text-center btn btn-secondary btn-lg btn-block">Sign Up</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.Sign Up -->
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.Content Wrapper -->
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevTrack | Create Project</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <!-- Tempusdominus Bootstrap 4 -->
+    <!--<link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" />-->
+    <!-- iCheck -->
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/adminlte.min.css" />
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css" />
+    <!-- summernote -->
+    <!--<link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css" />-->
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60" />
+        </div>
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="Login.html" class="brand-link">
+                <img src="img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
+                <span class="brand-text font-weight-light">DevTrack</span>
+            </a>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
+                    </div>
+                    <div class="info">
+                        <a href="UserProfile.html" class="d-block">Alexander Pierce</a>
+                    </div>
+                </div>
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                        <dev class="nav-item menu-open">
+                            <a href="Index.html" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </dev>
+                        <li class="nav-item">
+                            <a href="ProjectSummary.html" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>Projects</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>Activities</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>Reports</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="UserProfile.html" class="nav-link">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>
+                                    User Profile
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>
+                                    Log Out
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!--Breadcrumb-->
+            <!--Project Create page -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5>Create Project</h5>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="Index.html">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Projects</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <div class="card card-primary card-outline">
+                    <form class="form-horizontal">
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr data-widget="expandable-table" aria-expanded="false">
+                                                        <td class="font-weight-bold">Project Title</td>
+                                                        <td colspan="6">
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="text" class="form-control col-12" id="inputName" placeholder="Project Title" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr data-widget="expandable-table" aria-expanded="false">
+                                                        <td class="font-weight-bold">Allow Tracking</td>
+                                                        <td>
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input" checked id="customSwitch1" />
+                                                                <label class="custom-control-label" for="customSwitch1"></label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="font-weight-bold">Allow Webcam</td>
+                                                        <td>
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input" checked id="customSwitch3" />
+                                                                <label class="custom-control-label" for="customSwitch3"></label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="font-weight-bold">Allow Keyboard Hit</td>
+                                                        <td>
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input" checked id="customSwitch4" />
+                                                                <label class="custom-control-label" for="customSwitch4"></label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr data-widget="expandable-table" aria-expanded="true">
+                                                        <td class="font-weight-bold">Allow Screenshort</td>
+                                                        <td>
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input" checked id="customSwitch2" onchange="onChange(this)" />
+                                                                <label class="custom-control-label" for="customSwitch2"></label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="font-weight-bold">Time Interval</td>
+                                                        <td>
+                                                            <select class="dropdown" aria-label="Default select example" id="drpTimeInterval">
+                                                                <option>5 minutes</option>
+                                                                <option selected value="1">10 minutes</option>
+                                                                <option value="2">15 minutes</option>
+                                                                <option value="3">30 minutes</option>
+                                                                <option value="3">60 minutes</option>
+                                                            </select>
+                                                        </td>
+                                                        <td class="font-weight-bold">Allow Mouseclick</td>
+                                                        <td>
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input" checked id="customSwitch5" />
+                                                                <label class="custom-control-label" for="customSwitch5"></label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr data-widget="expandable-table" aria-expanded="false">
+                                                        <td class="font-weight-bold">Allow Active Window</td>
+                                                        <td>
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input" checked id="customSwitch6" />
+                                                                <label class="custom-control-label" for="customSwitch6"></label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="font-weight-bold">Allow Manual Time Entry</td>
+                                                        <td>
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input" checked id="customSwitch7" />
+                                                                <label class="custom-control-label" for="customSwitch7"></label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="font-weight-bold">Allow Running Program</td>
+                                                        <td>
+                                                            <div class="custom-control custom-switch">
+                                                                <input type="checkbox" class="custom-control-input" checked id="customSwitch8" />
+                                                                <label class="custom-control-label" for="customSwitch8"></label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr data-widget="expandable-table" aria-expanded="false">
+                                                        <td colspan="7"><button type="submit" class="btn btn-primary" style="float:right">Create Project</button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <!--<script>
+      $.widget.bridge("uibutton", $.ui.button);
+    </script>-->
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="js/adminlte.js"></script>
+    <!--disable TimeInterval-->
+    <script>
+        function onChange(element) {
+            if (document.getElementById("customSwitch2").checked) {
+
+                document.getElementById("drpTimeInterval").disabled = false;
+            }
+            else {
+                document.getElementById("drpTimeInterval").disabled = true;
+            }
+        }
+    </script>
+</body>
+</html>

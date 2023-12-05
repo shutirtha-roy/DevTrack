@@ -1,0 +1,111 @@
+﻿@model InvitationResponseModel
+@{
+    ViewData["Title"] = "Invitation";
+}
+<div class="row">
+    <div class="col-12">
+        <!-- card -->
+        <div class="card card-primary card-outline">
+            <form asp-area="App" asp-controller="Project" asp-action="Invitation" method="post" id="responseForm">
+                <input type="hidden" asp-for="Project" />
+                <input type="hidden" asp-for="ProjectId" />
+                <input type="hidden" asp-for="ProjectAdminName" />
+                <input type="hidden" asp-for="ProjectTitle" />
+                <input type="hidden" asp-for="ProjectCreateDate" />
+                <input type="hidden" asp-for="Role" />
+                <input type="hidden" asp-for="Date" />
+                <input type="hidden" asp-for="Email" />
+                <!-- card-body -->
+                <div class="card-body">
+                    <!-- project-logo -->
+                    <div class="row mb-4">
+                        <div class="col-sm-8">
+                            <div class="user-block">
+                                <img class="img-circle img-bordered-sm" src="~/App/img/projectIcon.png" alt="User Image">
+                                <span class="username">
+                                    <a href="#">@Model.ProjectTitle</a>
+                                </span>
+                                <span class="description">Created on @Convert.ToDateTime(Model.ProjectCreateDate).ToString("dd-MMM-yy") : @Model.ProjectAdminName  <span class="badge badge-pill badge-success ml-1">@Model.Role</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.project-logo -->
+                    <!--invitaion-description -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!--user-info -->
+                            <div>
+                                <p class="font-weight-bold">@Model.ProjectAdminName Invited you to join a project.<p>
+                                <p>Please review the basic information about the project.</p>
+                            </div>
+                            <!--/.user-info -->
+                            <!--role-info -->
+                            <div>
+                                <table class="table border-top border-bottom">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <p class="font-weight-bold">Your Assigned Role</p>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <p class="font-weight-bold">Worker</p>
+                                                    <p>You can only see your own tracked time and performance on this project</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--/.role-info -->
+                            <!--terms and response -->
+                            <div class="d-flex col-xs-12">
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="terms-policy">
+                                    <label for="terms-policy" class="font-weight-normal">
+                                        I have read and agreed to the <a href="terms-and-privacy.html">Terms of Services and Privacy Policy</a>
+                                    </label>
+                                </div>
+                                <div class="ml-auto d-print-inline-block d-flex">
+                                    <input asp-for="Status" value="" type="hidden" id="Status">
+                                    <div>
+                                        <input type="button" class="text-center btn btn-danger mr-3" id="DeclineButton" value="Decline">
+                                    </div>
+                                    <div>
+                                        <input type="button" class="text-center btn btn-success" id="AcceptButton" value="Accept" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.terms and response -->
+                        </div>
+                    </div>
+                    <!--/.invitaion-description -->
+                </div>
+                <!-- /.card-body -->
+            </form>
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+@section Scripts
+    {
+    <script>
+        $('#terms-policy').change(function () {
+            if ($('#terms-policy:checked').length > 0) {
+                $('#AcceptButton').prop('disabled', false);
+            } else {
+                $('#AcceptButton').prop('disabled', true);
+            }
+        });
+
+        $('#DeclineButton').on('click', function () {
+            document.getElementById('Status').value = 'Rejected';
+            document.getElementById('responseForm').submit();
+        });
+
+        $('#AcceptButton').on('click', function () {
+            document.getElementById('Status').value = 'Accepted';
+            document.getElementById('responseForm').submit();
+        });
+    </script>
+}

@@ -1,0 +1,108 @@
+﻿@model ProjectCreateModel
+
+@{
+    ViewData["Title"] = "Create Project";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary card-outline">
+            <form class="form-horizontal" asp-action="Create" asp-area="App" asp-controller="Project" method="post" asp-antiforgery="true">
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="activity">
+                            <div class="row">
+                                <div class="col-12">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr data-widget="expandable-table" aria-expanded="false">
+                                                <td class="font-weight-bold"><label asp-for="Title"></label></td>
+                                                <td colspan="6">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="text" class="form-control col-12" asp-for="Title" placeholder="Project Title" />
+                                                        <span asp-validation-for="Title" class="text-danger"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr data-widget="expandable-table" aria-expanded="false">
+                                                <td class="font-weight-bold">Allow Screenshort</td>
+                                                <td>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" asp-for="AllowScreenshot" class="custom-control-input" checked id="customSwitch2" />
+                                                        <label class="custom-control-label" for="customSwitch2"></label>
+                                                    </div>
+                                                </td>
+                                                <td class="font-weight-bold">Time Interval</td>
+                                                <td>
+                                                    <select class="dropdown" asp-for="TimeInterval" asp-items="@Model.TimeIntervalList" aria-label="Default select example">                                                      
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr data-widget="expandable-table" aria-expanded="true">
+                                                <td class="font-weight-bold">Allow Keyboard Hit</td>
+                                                <td>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" asp-for="AllowKeyboardHit" class="custom-control-input" checked id="customSwitch4" />
+                                                        <label class="custom-control-label" for="customSwitch4"></label>
+                                                    </div>
+                                                </td>
+                                                <td class="font-weight-bold">Allow Mouseclick</td>
+                                                <td>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" asp-for="AllowMouseClick" class="custom-control-input" checked id="customSwitch5" />
+                                                        <label class="custom-control-label" for="customSwitch5"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr data-widget="expandable-table" aria-expanded="false">
+                                                <td class="font-weight-bold">Allow Webcam</td>
+                                                <td>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" asp-for="AllowWebcam" class="custom-control-input" checked id="customSwitch3" />
+                                                        <label class="custom-control-label" for="customSwitch3"></label>
+                                                    </div>
+                                                </td>
+                                                <td class="font-weight-bold">Allow Active Window</td>
+                                                <td>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" asp-for="AllowActiveWindow" checked id="customSwitch6" />
+                                                        <label class="custom-control-label" for="customSwitch6"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr data-widget="expandable-table" aria-expanded="false">
+                                                <td class="font-weight-bold">Allow Manual Time Entry</td>
+                                                <td>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" asp-for="AllowManualTimeEntry" checked id="customSwitch7" />
+                                                        <label class="custom-control-label" for="customSwitch7"></label>
+                                                    </div>
+                                                </td>
+                                                <td class="font-weight-bold">Allow Running Program</td>
+                                                <td>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" asp-for="AllowRunningProgram" checked id="customSwitch8" />
+                                                        <label class="custom-control-label" for="customSwitch8"></label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr data-widget="expandable-table" aria-expanded="false">
+                                                <td colspan="7"><button type="submit" class="btn btn-primary" style="float:right">Create Project</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,108 @@
+﻿@model UserModel
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary card-outline">
+            <div class="card-body">
+                <div>
+                    <h1 class="text-center w-100">User Details</h1>
+                </div>
+                    
+                <div>
+                    <h3 class="w-100">Personal Details</h3>
+                </div>
+
+                <table class="table" id="userDetails">
+                    <tbody>
+                    <tr>
+                        <th scope="col">@Model.ApplicationUser.Name</th>
+                        <th scope="col">@Model.ApplicationUser.Email</th>
+                        <th scope="col">@Model.ApplicationUser.TimeZone</th>
+                        <th scope="col">
+                            <a class="btn btn-primary" asp-area="Admin" asp-controller="Home" asp-action="ManageUserClaims" asp-route-id="@Model.ApplicationUser.Id">Manage User Claims</a>
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div>
+                    <h3 class="w-100">Project Owner</h3>
+                </div>
+                <table id="tblOwnerProjects" class="table table-bordered table-striped text-center thead-light" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Created Date</th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <div>
+                    <h3 class="w-100">Project Worker</h3>
+                </div>
+                <table id="tblWorkerProjects" class="table table-bordered table-striped text-center thead-light" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Created Date</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts 
+{
+    <script src="~/app/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/app/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <script>
+        ﻿var dataTable;
+
+        $(document).ready(function () {
+            loadDataTable();
+            loadDataTableWorker();
+        });
+
+        function loadDataTable() {
+            dataTable = $('#tblOwnerProjects').DataTable({
+                "ajax": {
+                    "url": "/Admin/Home/GetAllProjectOwnerData",
+                    "data": {
+                        "id": applicationUserId()
+                    }
+                },
+                "columns": [
+                    { "data": "title", "width": "25%" },
+                    { "data": "createdDate", "width": "25%" },
+                ],
+                "searching": false,
+                "paging": false,
+                "info": false
+            });
+        }
+
+        function loadDataTableWorker() {
+            dataTable = $('#tblWorkerProjects').DataTable({
+                "ajax": {
+                    "url": "/Admin/Home/GetAllProjectWorkerData",
+                    "data": {
+                        "id": applicationUserId()
+                    }
+                },
+                "columns": [
+                    { "data": "title", "width": "25%" },
+                    { "data": "createdDate", "width": "25%" },
+                ],
+                "searching": false,
+                "paging": false,
+                "info": false
+            });
+        }
+
+        function applicationUserId() {
+           return "@Model.ApplicationUser.Id"
+        }
+    </script>
+}

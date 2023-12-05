@@ -1,0 +1,94 @@
+﻿@model SettingsEditModel
+
+<div class="row">
+    <div class="col-12">
+        <!-- Account Settings Form -->
+        <form role="form" asp-antiforgery="true" asp-action="Edit" enctype="multipart/form-data" 
+            asp-area="App" asp-controller="Settings" method="post">
+            <input type="hidden" asp-for="Id"/>
+            <div class="card card-primary card-outline">
+                <div class="card-body">
+                    <!-- Profile Image Upload -->
+                    <div class="form-group row">
+                        <div class="col-2 position-relative">
+                            <label asp-for="Image" class="position-absolute fixed-bottom ml-2">Profile Image</label>
+                        </div>
+                        <div class="col-6">
+                            <div class="picture-container" id="imgOpen">
+                                <div class="picture mx-auto">
+                                    @if(Model.Image == null)
+                                    {
+                                        <img src="~/images/local-images/ProfilePic.png" class="picture-src" id="wizardPicturePreview" title="">
+                                    }
+                                    else
+                                    {
+                                        <img src="@Model.ImageLocation" class="picture-src" id="wizardPicturePreview" title="">
+                                    }
+                                    <input type="file" id="wizard-picture" asp-for="ImageFile" class="">
+                                </div>
+                                <h6 class="text-center text-bold m-3">
+                                    <i class="fas fa-camera mr-2"></i>
+                                    Edit Your Picture
+                                </h6>
+                                <div>
+                                    <br>
+                                    <p class="text-muted m-0">Please click on Edit your Picture to update your recent profile picture.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-2">
+                            <label asp-for="Name" class="col-form-label">Name</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control" id="inputName" asp-for="Name" placeholder="Enter your Name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-2">
+                            <label asp-for="Email" class="col-form-label">Email</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="email" class="form-control" id="inputEmail" asp-for="Email" placeholder="Email" readonly="true">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-2">
+                            <label for="inputPassword" class="col-form-label">Password</label>
+                        </div>
+                        <div class="col-6">
+                            <a area="App" asp-controller="Settings" asp-action="ChangePassword" id="updatePassword" class="btn text-primary">
+                                <i class="fas fa-key mr-2"></i>Change your Password
+                            </a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @if(!string.IsNullOrEmpty(@Model.TimeZone))
+                        {
+                            <div class="col-2">
+                                <label asp-for="TimeZone" class="col-form-label">Timezone</label>
+                            </div>
+                            <div class="col-6">
+                                <select class="form-control" asp-for="TimeZone" asp-items="@Model.TimeZoneList" aria-label="Default select example">   
+                                    <option value="@Model.TimeZone">@Model.TimeZone</option>
+                                </select>
+                            </div>
+                        }
+                    </div>
+                    <div class="form-group row">
+                        <div class="offset-md-2 col-6">
+                            <button class="btn btn-primary btn-block" type="submit">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/settings.js"></script>
+}

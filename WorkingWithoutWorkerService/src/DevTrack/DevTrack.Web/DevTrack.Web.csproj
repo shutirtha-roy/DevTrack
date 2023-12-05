@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-DevTrack.Web-79E205D3-DC22-4D57-BF64-D3156714D37C</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\App\js\.eslintrc.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DevTrack.Infrastructure\DevTrack.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\App\plugins\datatables-bs4\js\dataTables.bootstrap4.js" />
+    <None Include="wwwroot\App\plugins\datatables-bs4\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\buttons.bootstrap4.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\buttons.bootstrap4.min.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\buttons.colVis.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\buttons.colVis.min.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\buttons.flash.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\buttons.flash.min.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\buttons.html5.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\buttons.html5.min.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\buttons.print.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\buttons.print.min.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\dataTables.buttons.js" />
+    <None Include="wwwroot\App\plugins\datatables-buttons\js\dataTables.buttons.min.js" />
+    <None Include="wwwroot\App\plugins\datatables-responsive\js\dataTables.responsive.js" />
+    <None Include="wwwroot\App\plugins\datatables-responsive\js\dataTables.responsive.min.js" />
+    <None Include="wwwroot\App\plugins\datatables-responsive\js\responsive.bootstrap4.js" />
+    <None Include="wwwroot\App\plugins\datatables-responsive\js\responsive.bootstrap4.min.js" />
+    <None Include="wwwroot\App\plugins\datatables\jquery.dataTables.js" />
+    <None Include="wwwroot\App\plugins\datatables\jquery.dataTables.min.js" />
+    <None Include="wwwroot\App\plugins\icheck-bootstrap\LICENSE" />
+  </ItemGroup>
+
+</Project>

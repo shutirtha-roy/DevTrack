@@ -1,0 +1,162 @@
+﻿@model IEnumerable<SelectListItem>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <select class="form-control" id="SearchItem_Status">
+                                <option value="0">Active</option>
+                                <option value="1">Archived</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <select class="form-control" id="SearchItem_Role" asp-items="@Model">
+                                <option value="0">All</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a asp-area="App" asp-controller="Project" asp-action="Create" class="btn btn-success pull-right">New Project</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="projects" class="table table-bordered table-hover">
+                    <thead class="">
+                        <tr>
+                            <th class="text-center">Title</th>
+                            <th class="text-center">Role</th>
+                            <th class="text-center">Team Member(s)</th>
+                            <th class="text-center">Total Logged (hh:mm)</th>
+                            <th class="text-center">Action</th>
+                            <th class="text-center">Status</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+
+<partial name="_RestoreModalPartial" />
+
+@section Styles{
+    <link rel="stylesheet" href="~/app/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+}
+
+@section Scripts{
+    <script src="~/app/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/app/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+
+    <script>
+        $(function () {
+            $('#projects').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    url: "/App/Project/GetProjectData",
+                    type: "GET",
+                    data: function (d) {
+                        d.SearchItem = {
+                            Status: $("#SearchItem_Status").val(),
+                            Role: $("#SearchItem_Role").val(),
+                        }
+                    },
+                },
+                "columnDefs": [
+                    {
+                        targets: 0,
+                        render: function (data, type, row){
+                            var badgeColor = GetBadgeColor(row[1]);
+                            return `<a href="/App/Project/Details/${row[4]}">${data}</a> <span class="badge badge-pill ${badgeColor}"> ${row[1]} </span>`;
+                        }
+                    },
+                    {
+                        targets: [1, 5],
+                        visible: false,
+                        searchable: false,
+                    },
+                    {
+                        targets: 2,
+                        className: "dt-center",
+                        render: function (data, type, row){
+                            return `<i class="fas fa-users td-icon"></i>  ${data > 0 ? data : "--"}`;
+                        }
+                    },
+                    {
+                        targets: 3,
+                        className: "dt-center",
+                        render: function (data, type, row){
+                            return `<i class="fa fa-clock td-icon"></i>  ${data}`;
+                        }
+                    },
+                    {
+                        targets: 4,
+                        orderable: false,
+                        className: "dt-center",
+                        render: function (data, type, row) {
+                            if(row[1] == "Owner"){
+                                if ($("#SearchItem_Status").val()=='0')
+                                {
+                                    return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/App/Project/Edit/${data}'" value='${data}'>
+                                                <i class="fas fa-pencil-alt"></i>
+                                                Edit
+                                            </button>`
+                                }
+                                else 
+                                {
+
+                                    return `<button type="submit" class="btn btn-danger btn-sm show-bs-modal" data-id='${data}' value='${data}'>
+                                                <i class="fas fa-trash"></i>
+                                                Restore
+                                            </button>`;
+                                }
+                            }
+                            else{
+                                return `Invitation ${row[5] == 0 ? "Not Sent" : row[5]}`;
+                            }
+                        }
+                    }
+                ]
+            });
+        });
+
+        function GetBadgeColor(str){
+            if(str == 'Owner'){
+                return "badge-success";
+            }
+            else if(str == "Worker"){
+                return "badge-secondary";
+            }
+            else{
+                return "";
+            }
+        }
+
+        $("#SearchItem_Status,#SearchItem_Role").change(function () {
+            $('#projects').DataTable().ajax.reload(null, false);
+        });
+
+        $('#projects').on('click', '.show-bs-modal', function (event) {
+            var id = $(this).data("id");
+            var modal = $("#modal-default");
+            modal.find('.modal-body p').text('Are you sure you want to restore this record?');
+            $("#projectId").val(id);
+            $("#restoreForm").attr("action", "/App/Project/Restore");
+            modal.modal('show');
+        });
+
+        $("#restoreButton").click(function () {
+            $("#restoreForm").submit();
+        });
+
+    </script>
+}

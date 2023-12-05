@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Templates\Emails\ProjectInvitation\ProjectInvitationTemplate.cs" />
+	  <Compile Remove="Templates\Emails\ProjectInvitation\ProjectInvitationTemplatePartial.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Templates\Emails\ProjectInvitation\ProjectInvitationTemplate.tt" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+		<PackageReference Include="MailKit" Version="3.4.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5" />
+		<PackageReference Include="SixLabors.ImageSharp" Version="2.1.3" />
+		<PackageReference Include="System.CodeDom" Version="6.0.0" />
+		<PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.23" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Models\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Templates\Emails\ProjectInvitation\ProjectInvitation.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>ProjectInvitation.tt</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Templates\Emails\ProjectInvitation\ProjectInvitation.tt">
+	    <Generator>TextTemplatingFilePreprocessor</Generator>
+	    <LastGenOutput>ProjectInvitation.cs</LastGenOutput>
+	  </None>
+	</ItemGroup>
+
+</Project>

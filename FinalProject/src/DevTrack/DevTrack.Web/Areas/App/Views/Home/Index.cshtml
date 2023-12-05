@@ -1,0 +1,244 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@section Styles
+    {
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="~/App/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/App/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/App/plugins/chart.js/Chart.css">
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <!-- BAR CHART -->
+        <div class="card card-success">
+            <div class="card-header bg-info">
+                <h3 class="card-title">Project-wise Total Logged Hours (Your Created Projects)</h3>
+            </div>
+            <div class="card-body">
+                <div class="chart">
+                    <canvas id="OwnerProjectbarChart" style="min-height: 250px; height: 350px; max-height: 400px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- BAR CHART -->
+        <div class="card card-success">
+            <div class="card-header bg-info">
+                <h3 class="card-title">Project-wise Total Logged Hours (Worker Projects)</h3>
+            </div>
+            <div class="card-body">
+                <div class="chart">
+                    <canvas id="WorkerProjectBarChart" style="min-height: 250px; height: 350px; max-height: 400px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+
+    <div class="col-md-6">
+        <!-- Line CHART -->
+        <div class="card card-success">
+            <div class="card-header bg-info">
+                <h3 class="card-title">Month-wise Total Logged Hours (Your Created Projects)</h3>
+            </div>
+            <div class="card-body">
+                <div class="chart">
+                    <canvas id="OwnerMonthlyLineChart" style="min-height: 250px; height: 350px; max-height: 400px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- LINE CHART -->
+        <div class="card card-success">
+            <div class="card-header bg-info">
+                <h3 class="card-title">Month-wise Total Logged Hours (Worker Projects)</h3>
+            </div>
+            <div class="card-body">
+                <div class="chart">
+                    <canvas id="WorkerMonthlyLineChart" style="min-height: 250px; height: 350px; max-height: 400px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/App/plugins/chart.js/Chart.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                async: false,
+                type: 'GET',
+                url: '/App/Home/GetBarChartData',
+                traditional: true,
+                data: "",
+                success: function (data) {
+                    //If ajax request successful then show this message
+                    var _data = data;
+                    var _OwnerBarChartLabels = _data[0];
+                    var _WorkerBarChartLabels = _data[1];
+                    var _OwnerBarChartData= _data[2];
+                    var _WorkerBarChartData = _data[3];
+                    var _OwnerLineChartData = _data[4];
+                    var _WorkerLineChartData = _data[5];
+
+
+                    var dynamicColors = function () {
+                        var r = Math.floor(Math.random() * 100);
+                        var g = Math.floor(Math.random() * 100);
+                        var b = Math.floor(Math.random() * 255);
+                        return "rgba(" + r + "," + g + "," + b + ", 0.3)";
+                    };
+
+                    new Chart("OwnerProjectbarChart",
+                        {
+                            type: "bar",
+                            data: {
+                                labels: _OwnerBarChartLabels,
+                                datasets: [{
+                                    backgroundColor: dynamicColors,
+                                    borderColor: 'rgba(201, 203, 207,0.6)',
+                                    borderWidth: 1,
+                                    label: 'Total Logged Hours',
+                                    data: _OwnerBarChartData
+                                }]
+                            },
+                            options: {
+                                maintainAspectRatio: false,
+                                responsive: true,
+                                legend: {
+                                    display: true
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false,
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false,
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+
+                    new Chart("WorkerProjectBarChart",
+                        {
+                            type: "bar",
+                            data: {
+                                labels: _WorkerBarChartLabels,
+                                datasets: [{
+                                    backgroundColor: dynamicColors,
+                                    borderColor: 'rgba(201, 203, 207,0.6)',
+                                    borderWidth: 1,
+                                    label: 'Total Logged Hours',
+                                    data: _WorkerBarChartData
+                                }]
+                            },
+                            options: {
+                                maintainAspectRatio: false,
+                                responsive: true,
+                                legend: {
+                                    display: true
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false,
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false,
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+
+                    new Chart("OwnerMonthlyLineChart",
+                        {
+                            type: "line",
+                            data: {
+                                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                                datasets: [{
+                                    backgroundColor: 'rgba(60,141,188,0.9)',
+                                    label: 'Total Logged Hours',
+                                    data: _OwnerLineChartData,
+                                    fill: false,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    tension: 0.1
+                                }]
+                            },
+                            options: {
+                                maintainAspectRatio: false,
+                                responsive: true,
+                                legend: {
+                                    display: true
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false,
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false,
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+
+                    new Chart("WorkerMonthlyLineChart",
+                        {
+                            type: "line",
+                            data: {
+                                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                                datasets: [{
+                                    backgroundColor: 'rgba(60,141,188,0.9)',
+                                    label: 'Total Logged Hours',
+                                    data: _WorkerLineChartData,
+                                    fill: false,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    tension: 0.1
+                                }]
+                            },
+                            options: {
+                                maintainAspectRatio: false,
+                                responsive: true,
+                                legend: {
+                                    display: true
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        gridLines: {
+                                            display: false,
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        gridLines: {
+                                            display: false,
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                },
+                failure: function (data) {
+                }
+            });
+        });
+    </script>
+}

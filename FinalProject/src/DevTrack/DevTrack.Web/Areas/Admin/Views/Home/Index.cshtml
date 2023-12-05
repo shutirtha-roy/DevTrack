@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-primary card-outline">
+            <div class="card-body">
+                <h1 class="text-center">Admin Dashboard</h1>
+
+                <table id="tblData" class="table table-bordered table-striped text-center thead-light" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>TimeZone</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts 
+{
+    <script src="~/app/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/app/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <script>
+        ﻿var dataTable;
+
+        $(document).ready(function () {
+            loadDataTable();
+        });
+
+        function loadDataTable() {
+            dataTable = $('#tblData').DataTable({
+                "ajax": {
+                    "url": "/Admin/Home/GetAllUsersData"
+                },
+                "columns": [
+                    { "data": "name", "width": "25%" },
+                    { "data": "email", "width": "25%" },
+                    { "data": "timeZone", "width": "25%" },
+                    {
+                        "data": "id", "width": "25%",
+                        "render": function(data)
+                        {
+                            return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/admin/home/details/${data}'">
+                                Details
+                            </button>`
+                        }
+                    }
+                ]
+            });
+        }
+    </script>
+}

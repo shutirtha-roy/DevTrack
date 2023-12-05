@@ -1,0 +1,322 @@
+﻿@{
+    var count = 0;
+}
+
+@model ActivityProjectUserModel
+
+<div class="card card-primary card-outline">
+    <div class="form-horizontal">
+        <div class="card-body">
+            <div class="tab-content">
+                <div class="active tab-panel" id="report">
+                    <form role="form" asp-antiforgery="true" asp-action="MyReport"
+                        asp-area="App" asp-controller="Report" method="post">
+                        <input type="hidden" asp-for="WorkerUserId"/>
+                        <!-- Date selector -->
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Select Your Report Date</label>
+                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                        
+                                        <button type="button" class="btn btn-default float-right" id="daterange-btn">
+                                            <i class="far fa-calendar-alt"></i> Select date
+                                            <i class="fas fa-caret-down"></i>
+                                        </button>
+                                        <input type="hidden" asp-for="StartTime"/>
+                                        <input type="hidden" asp-for="EndTime"/>
+                                        <select class="ml-3 form-control w-25" asp-for="ProjectId" asp-items="@Model.ProjectList">
+                                            <option value="" selected>Please select your project</option>
+                                        </select>
+                                
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label>Find Your Report</label>
+                                    <button class="btn btn-primary btn-block" type="submit">Search</button>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label>Generate Pdf</label>
+                                    <input type="button" class="btn btn-primary btn-block" value="GeneratePdf" onclick="window.print();" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="row">
+                        <div class="col-12"> 
+                            @if(@Model.ReportActivityData != null)
+                            {
+                                <table class="table table-borderless pr-5" style="width=100%">
+                                    <tbody>
+                                        @foreach(var reportDataInOneDay in @Model.ReportActivityData)
+                                        {
+                                            var reportDataPairs = @Model.ReportActivityData[reportDataInOneDay.Key];
+
+                                            <tr class="alert alert-primary border border-white">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="font-weight-bold text-center h5">@reportDataInOneDay.Key.ToString("dd MMM yyyy")</td>
+                                            </tr>
+
+                                            <!-- column heading -->
+                                            <tr data-widget="expandable-table" aria-expanded="false">
+                                                <td></td>
+                                                <td class="font-weight-bold text-center">0-10 mins</td>
+                                                <td class="font-weight-bold text-center">11-20 mins</td>
+                                                <td class="font-weight-bold text-center">21-30 mins</td>
+                                                <td class="font-weight-bold text-center">31-40 mins</td>
+                                                <td class="font-weight-bold text-center">41-50 mins</td>
+                                                <td class="font-weight-bold text-center">51-60 mins</td>
+                                            </tr>
+
+                                            count = 0;
+
+                                            @foreach(var timeSlotPairs in reportDataPairs)
+                                            {
+                                                var data = reportDataPairs[timeSlotPairs.Key];
+                                                
+                                                @if(count == 0)
+                                                {
+                                                    @:<tr>
+                                                        @:<td class="font-weight-bold align-middle">
+                                                            @data.Value.hourSlot
+                                                        @:</td>
+                                                }
+                                                                                              
+                                                @:<td>
+                                                    <div class="card activity-card">
+                                                        @if(data.Value.reportSlot.Count != 0)
+                                                        {
+                                                            var activityList = data.Value.reportSlot;
+                                                            var screenCaptureList = new List<string>();
+                                                            var webcamCaptureList = new List<string>();
+                                                            var activeWindowsList = new List<ActiveWindows>();
+                                                            var runningProgramList = new List<RunningProgram>();
+                                                            var keyboardKeysList = new List<string>();
+                                                            var totalMouseActivity = 0;
+                                                            var totalKeyBoardHits = 0;
+                                                            var totalRunningPrograms = 0;
+                                                            var totalActiveWindows = 0;
+                                                            Guid? uniqueId = null;
+                                                            var activeWindowsValues = "";
+                                                            var activeRunningValues = "";
+
+                                                            @foreach(var activity in activityList)
+                                                            {
+                                                                uniqueId = uniqueId == null ? activity.ActivityId : uniqueId;
+                                                                screenCaptureList.Add(activity.ScreenCapture.Image);
+
+                                                                @if(activity.WebcamCapture.Image != null)
+                                                                {
+                                                                    webcamCaptureList.Add(activity.WebcamCapture.Image);
+                                                                }
+                                                            
+                                                                keyboardKeysList.Add(activity.KeyboardActivity.KeyCounts);
+                                                                activeWindowsList.Concat(activity.ActiveWindows);
+                                                                runningProgramList.Concat(activity.RunningPrograms);
+                                                            
+                                                                totalMouseActivity += activity.MouseActivity.TotalHits;
+                                                                totalKeyBoardHits += activity.KeyboardActivity.TotalHits;
+                                                                totalRunningPrograms += activity.RunningPrograms.Count;
+                                                                totalActiveWindows += activity.ActiveWindows.Count;
+
+                                                                activeRunningValues += activity.RunningPrograms.Count != 0 ? string.Join(',', activity.RunningPrograms.Select(x => new { x.MainWindowTitle, x.ProcessName }).ToList()) : "";
+                                                                activeWindowsValues += activity.ActiveWindows.Count != 0 ? string.Join(',', activity.ActiveWindows.Select(x => new { x.ProcessName, x.MainWindowTitle }).ToList()) : "";
+                                                            }
+
+                                                            var keyBoardValues = string.Join(',', keyboardKeysList);
+
+                                                            @:<div class="d-flex image-full">
+                                                                <div class="w-50" data-toggle="modal" data-target="#screenshareModal_@uniqueId">
+                                                                    <img src="/images/activity/screencapture/@screenCaptureList[0]" class="card-img-top" alt="...">
+                                                                </div>
+                                                                <div  class="w-50" data-toggle="modal" data-target="#webcamModal_@uniqueId">
+                                                                    @if(webcamCaptureList.Count == 0)
+                                                                    {
+                                                                        <img src="/images/activity/webcamcapture/NoWebcam.PNG" class="card-img-top" alt="...">
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <img src="/images/activity/webcamcapture/@webcamCaptureList[0]" class="card-img-top" alt="...">
+                                                                    }
+                                                                </div>
+                                                            @:</div>
+
+                                                            <!-- Modal for ScreenShot -->
+                                                            <div class="modal fade" id="screenshareModal_@uniqueId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                                    <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title">ScreenShare</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="container-fluid">
+                                                                            <div class="row">
+                                                                                @foreach(var screenCapture in screenCaptureList)
+                                                                                {
+                                                                                    <div class="col">
+                                                                                        <img src="/images/activity/screencapture/@screenCapture" class="card-img-top" alt="...">
+                                                                                    </div>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Modal for Webcam -->
+                                                            <div class="modal fade" id="webcamModal_@uniqueId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                                    <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title">ScreenShare</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="container-fluid">
+                                                                            <div class="row">
+                                                                                @if(webcamCaptureList.Count > 0)
+                                                                                {
+                                                                                    @foreach(var webcapture in webcamCaptureList)
+                                                                                    {
+                                                                                        <div class="col">
+                                                                                            <img src="/images/activity/webcamcapture/@webcapture" class="card-img-top" alt="...">
+                                                                                        </div>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            @:<div class="card-body pl-1">
+                                                                <button  type="button" class="btn btn-transparent p-0" data-toggle="tooltip" data-placement="top" title="">
+                                                                    <span class="badge bad-pill badge-primary">Mouse click: @totalMouseActivity</span>
+                                                                </button>
+                                                                <button  type="button" class="btn btn-transparent p-0" data-toggle="tooltip" data-placement="top" title="@keyBoardValues">
+                                                                    <span class="badge bad-pill badge-info">Keyboard click: @totalKeyBoardHits</span>
+                                                                </button>
+                                                                <button  type="button" class="btn btn-transparent p-0" data-toggle="tooltip" data-placement="top" title="@activeRunningValues">
+                                                                    <span class="badge bad-pill badge-warning">Running Programs: @totalRunningPrograms</span>
+                                                                </button>
+                                                                <button  type="button" class="btn btn-transparent p-0" data-toggle="tooltip" data-placement="top" title="@activeWindowsValues">
+                                                                    <span class="badge bad-pill badge-warning">Active Windows: @totalActiveWindows</span>
+                                                                </button>
+                                                            @:</div>
+                                                        }
+                                                        else
+                                                        {
+                                                            @:<div class="d-flex image-full" style="height: 10vh;">
+                                                                <p></p>
+                                                            @:</div>
+
+                                                            @:<div class="card-body pl-1" style="height: 16vh;">
+                                                                <p></p>
+                                                            @:</div>
+                                                        }
+                                                    </div>
+                                                @:</td>
+
+                                                count++;
+                                                count = count % 6;
+
+                                                @if(count == 0)
+                                                {
+                                                    @:</tr>
+                                                }
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            }   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script>
+    $(function () {
+        //Datemask dd/mm/yyyy
+        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+
+        //Datemask2 mm/dd/yyyy
+        $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' });
+
+        //Money Euro
+        $('[data-mask]').inputmask();
+
+        //Date picker
+        $('#reservationdate').datetimepicker({
+            format: 'L'
+        });
+
+        //Date and time picker
+        $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+        //Date range picker
+        $('#reservation').daterangepicker();
+
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        });
+
+        //Date range as a button
+        $('#daterange-btn').daterangepicker({
+            ranges   : {
+            'Today'       : [moment(), moment()],
+            'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days' : [moment().subtract(6, 'days'), moment()]
+            },
+            startDate: moment().subtract(29, 'days'),
+            endDate  : moment()
+        },
+        function (start, end) {
+            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+        });
+
+
+        $('.applyBtn').click(function(){
+            var startData = $('#daterange-btn').data('daterangepicker').startDate.format('YYYY-MM-DD');
+            var endData = $('#daterange-btn').data('daterangepicker').endDate.format('YYYY-MM-DD');
+
+            $('#StartTime').val(startData);
+            $('#EndTime').val(endData);
+        });
+
+        
+     });   
+</script>
+<partial name="_ValidationScriptsPartial" />
+}

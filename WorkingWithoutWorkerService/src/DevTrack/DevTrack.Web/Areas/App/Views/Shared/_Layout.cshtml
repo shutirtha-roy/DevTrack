@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DevTrack | Dashboard</title>
+    <partial name="_StyleSheetLinkPartial" />
+    <link rel="stylesheet" href="~/custom-css/custom.css">
+    @await RenderSectionAsync("Styles", false)
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="~/app/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        </div>
+        <!-- Navbar -->
+        <partial name="_NavbarPartial" />
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <partial name="_SidebarPartial" />
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!--Breadcrumb-->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5>@ViewData["Title"]</h5>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <partial name="_ResponsePartial" />
+                    @RenderBody()
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <partial name="_FooterPartial" />
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <partial name="_ThemeScriptsPartial" />
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

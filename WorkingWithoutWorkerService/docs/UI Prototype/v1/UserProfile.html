@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DevTrack | User Profile</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/adminlte.min.css">
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        </div>
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link">
+                <img src="img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">DevTrack</span>
+            </a>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">Alexander Pierce</a>
+                    </div>
+                </div>
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+                        <dev class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Dashboard
+                                </p>
+                            </a>
+                        </dev>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Projects
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>
+                                    Activities
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>
+                                    Reports
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="UserProfile.html" class="nav-link">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>
+                                    User Profile
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>
+                                    Log Out
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!--Breadcrumb-->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5>Account Settings</h5>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Account Settings</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Account Settings Form -->
+                            <form>
+                                <div class="card card-primary card-outline">
+                                    <div class="card-body">
+                                        <!-- Profile Image Upload -->
+                                        <div class="form-group row">
+                                            <div class="col-2 position-relative">
+                                                <label for="" class="position-absolute fixed-bottom ml-2">Profile Image</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="picture-container" id="imgOpen">
+                                                    <div class="picture mx-auto">
+                                                        <img src="img/ProfilePic.PNG" class="picture-src" id="wizardPicturePreview" title="">
+                                                        <input type="file" id="wizard-picture" class="">
+                                                    </div>
+                                                    <h6 class="text-center text-bold m-3">
+                                                        <i class="fas fa-camera mr-2"></i>
+                                                        Edit Your Picture
+                                                    </h6>
+                                                    <div>
+                                                        <br>
+                                                        <p class="text-muted m-0">Please click on Edit your Picture to update your recent profile picture.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label for="inputName" class="col-form-label">Name</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="text" class="form-control" id="inputName" placeholder="Enter your Name" value="Samin Yaser Kabir">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label for="inputEmail" class="col-form-label">Email</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="email" class="form-control" id="inputEmail" placeholder="Email" value="samin@gmail.com" readonly="true">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label for="inputPassword" class="col-form-label">Password</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="UpdatePassword.html" id="updatePassword" class="btn text-primary" target="_blank">
+                                                    <i class="fas fa-key mr-2"></i>Change your Password
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label for="text" class="col-form-label">Account Timezone</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <select class="form-control" id="exampleSelectBorder">
+                                                    <option>(+06:00) Asia - Dhaka</option>
+                                                    <option>(+08:00) Asia - Hong Kong</option>
+                                                    <option>(+12:00) Asia - Efate</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="offset-md-2 col-6">
+                                                <button class="btn btn-primary btn-block" type="submit">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; DevTrack</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 3.2.0
+            </div>
+        </footer>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="js/adminlte.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        //Profile Preview JQuery
+        $(document).ready(function () {
+            $("#wizard-picture").change(function () {
+                readURL(this);
+            });
+        });
+
+        //Profile Load JQuery
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>
